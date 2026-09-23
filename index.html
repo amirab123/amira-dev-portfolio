@@ -1,1 +1,3152 @@
 
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Portfolio de Amira Belgharat - Développeuse Web Full-Stack Junior"
+    >
+
+    <title>Amira Belgharat | Développeuse Web Full-Stack Junior</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"],
+                        display: ["Space Grotesk", "sans-serif"]
+                    },
+
+                    colors: {
+                        violet: {
+                            450: "#8b5cf6"
+                        }
+                    },
+
+                    boxShadow: {
+                        glow: "0 0 50px rgba(139,92,246,.18)"
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+
+        /* ==============================
+           BASE
+        ============================== */
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #050816;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        ::selection {
+            background: #8b5cf6;
+            color: white;
+        }
+
+        /* ==============================
+           BACKGROUND
+        ============================== */
+
+        .grid-bg {
+            background-image:
+                linear-gradient(
+                    rgba(255,255,255,.035) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,.035) 1px,
+                    transparent 1px
+                );
+
+            background-size: 45px 45px;
+        }
+
+        .gradient-text {
+            background:
+                linear-gradient(
+                    90deg,
+                    #a78bfa,
+                    #22d3ee
+                );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .gradient-border {
+            position: relative;
+        }
+
+        .glass {
+            background: rgba(15, 23, 42, .68);
+            border: 1px solid rgba(148, 163, 184, .12);
+            backdrop-filter: blur(18px);
+        }
+
+        /* ==============================
+           REVEAL ANIMATION
+        ============================== */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+
+            transition:
+                opacity .8s ease,
+                transform .8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ==============================
+           FLOAT
+        ============================== */
+
+        .float {
+            animation: float 5s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+
+        }
+
+        /* ==============================
+           CARD HOVER
+        ============================== */
+
+        .hover-card {
+            transition:
+                transform .35s ease,
+                border-color .35s ease,
+                box-shadow .35s ease;
+        }
+
+        .hover-card:hover {
+            transform: translateY(-8px);
+
+            border-color:
+                rgba(139, 92, 246, .5);
+
+            box-shadow:
+                0 20px 50px rgba(0,0,0,.25),
+                0 0 35px rgba(139,92,246,.08);
+        }
+
+        /* ==============================
+           NAVBAR
+        ============================== */
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: "";
+
+            position: absolute;
+
+            left: 50%;
+            bottom: -7px;
+
+            width: 0;
+            height: 2px;
+
+            background: #8b5cf6;
+
+            transform: translateX(-50%);
+
+            transition: .3s;
+        }
+
+        .nav-link:hover::after {
+            width: 70%;
+        }
+
+        /* ==============================
+           TIMELINE
+        ============================== */
+
+        .timeline-line {
+            position: absolute;
+
+            left: 9px;
+            top: 10px;
+            bottom: 10px;
+
+            width: 1px;
+
+            background:
+                linear-gradient(
+                    #8b5cf6,
+                    rgba(139,92,246,.05)
+                );
+        }
+
+        /* ==============================
+           PROJECT IMAGE
+        ============================== */
+
+        .project-image {
+            min-height: 180px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::before {
+            content: "";
+
+            position: absolute;
+
+            width: 180px;
+            height: 180px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,.08);
+
+            filter: blur(10px);
+        }
+
+        /* ==============================
+           SKILL ICON
+        ============================== */
+
+        .skill-icon {
+            transition: transform .3s ease;
+        }
+
+        .hover-card:hover .skill-icon {
+            transform: scale(1.1) rotate(3deg);
+        }
+
+        /* ==============================
+           MOBILE MENU
+        ============================== */
+
+        .mobile-link {
+            color: #cbd5e1;
+            transition: .2s;
+        }
+
+        .mobile-link:hover {
+            color: white;
+        }
+
+        /* ==============================
+           CURSOR LIGHT
+        ============================== */
+
+        #cursorLight {
+            position: fixed;
+
+            width: 250px;
+            height: 250px;
+
+            border-radius: 50%;
+
+            pointer-events: none;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(139,92,246,.10),
+                    transparent 70%
+                );
+
+            transform: translate(-50%, -50%);
+
+            z-index: 0;
+        }
+
+    </style>
+</head>
+
+
+<body class="font-sans">
+
+<!-- Cursor -->
+<div id="cursorLight" class="hidden md:block"></div>
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<header
+    id="navbar"
+    class="
+        fixed
+        top-0
+        left-0
+        right-0
+        z-50
+        transition-all
+        duration-300
+    "
+>
+
+    <nav
+        class="
+            max-w-7xl
+            mx-auto
+            px-6
+            lg:px-8
+            py-5
+            flex
+            items-center
+            justify-between
+        "
+    >
+
+        <!-- LOGO -->
+
+        <a
+            href="#accueil"
+            class="
+                font-display
+                font-bold
+                text-xl
+                tracking-wide
+            "
+        >
+            AMIRA<span class="gradient-text">.</span>
+        </a>
+
+
+        <!-- DESKTOP -->
+
+        <div class="hidden md:flex items-center gap-7">
+
+            <a href="#accueil"
+               class="nav-link text-sm text-slate-300 hover:text-white">
+                Accueil
+            </a>
+
+            <a href="#apropos"
+               class="nav-link text-sm text-slate-300 hover:text-white">
+                À propos
+            </a>
+
+            <a href="#competences"
+               class="nav-link text-sm text-slate-300 hover:text-white">
+                Compétences
+            </a>
+
+            <a href="#experience"
+               class="nav-link text-sm text-slate-300 hover:text-white">
+                Expérience
+            </a>
+
+            <a href="#projets"
+               class="nav-link text-sm text-slate-300 hover:text-white">
+                Projets
+            </a>
+
+            <a href="#formations"
+               class="nav-link text-sm text-slate-300 hover:text-white">
+                Formations
+            </a>
+
+            <a
+                href="#contact"
+                class="
+                    ml-2
+                    px-5
+                    py-2.5
+                    rounded-full
+                    bg-white
+                    text-slate-900
+                    text-sm
+                    font-semibold
+                    hover:bg-violet-100
+                    transition
+                "
+            >
+                Contact
+            </a>
+
+        </div>
+
+
+        <!-- MOBILE -->
+
+        <button
+            id="menuBtn"
+            class="md:hidden"
+            aria-label="Menu"
+        >
+            <i data-lucide="menu"></i>
+        </button>
+
+    </nav>
+
+
+    <!-- MOBILE MENU -->
+
+    <div
+        id="mobileMenu"
+        class="
+            hidden
+            mx-5
+            mb-4
+            p-6
+            rounded-2xl
+            glass
+        "
+    >
+
+        <div class="flex flex-col gap-5">
+
+            <a href="#accueil" class="mobile-link">
+                Accueil
+            </a>
+
+            <a href="#apropos" class="mobile-link">
+                À propos
+            </a>
+
+            <a href="#competences" class="mobile-link">
+                Compétences
+            </a>
+
+            <a href="#experience" class="mobile-link">
+                Expérience
+            </a>
+
+            <a href="#projets" class="mobile-link">
+                Projets
+            </a>
+
+            <a href="#formations" class="mobile-link">
+                Formations
+            </a>
+
+            <a href="#contact" class="mobile-link">
+                Contact
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section
+    id="accueil"
+    class="
+        relative
+        min-h-screen
+        flex
+        items-center
+        overflow-hidden
+        grid-bg
+        pt-32
+        pb-20
+    "
+>
+
+    <!-- Background lights -->
+
+    <div
+        class="
+            absolute
+            -top-40
+            -right-40
+            w-96
+            h-96
+            bg-violet-600/20
+            rounded-full
+            blur-3xl
+        "
+    ></div>
+
+    <div
+        class="
+            absolute
+            bottom-0
+            left-0
+            w-80
+            h-80
+            bg-cyan-500/10
+            rounded-full
+            blur-3xl
+        "
+    ></div>
+
+
+    <div
+        class="
+            relative
+            z-10
+            max-w-7xl
+            mx-auto
+            px-6
+            lg:px-8
+            w-full
+        "
+    >
+
+        <div
+            class="
+                grid
+                lg:grid-cols-2
+                gap-16
+                items-center
+            "
+        >
+
+            <!-- LEFT -->
+
+            <div class="reveal">
+
+                <div
+                    class="
+                        inline-flex
+                        items-center
+                        gap-2
+                        px-4
+                        py-2
+                        rounded-full
+                        border
+                        border-violet-400/30
+                        bg-violet-500/10
+                        text-violet-200
+                        text-sm
+                        mb-7
+                    "
+                >
+                    <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+
+                    Disponible pour de nouvelles opportunités
+                </div>
+
+
+                <p class="text-slate-400 mb-3">
+                    Bonjour, je suis
+                </p>
+
+
+                <h1
+                    class="
+                        font-display
+                        text-5xl
+                        sm:text-6xl
+                        lg:text-7xl
+                        font-bold
+                        leading-tight
+                    "
+                >
+
+                    <span class="gradient-text">
+                        Amira
+                    </span>
+
+                    <br>
+
+                    <span class="text-white">
+                        Belgharat
+                    </span>
+
+                </h1>
+
+
+                <h2
+                    class="
+                        mt-5
+                        text-2xl
+                        sm:text-3xl
+                        font-semibold
+                        text-slate-200
+                    "
+                >
+                    Développeuse Web
+                    <span class="text-violet-400">
+                        Full-Stack Junior
+                    </span>
+                </h2>
+
+
+                <p
+                    class="
+                        mt-6
+                        text-slate-400
+                        text-lg
+                        leading-relaxed
+                        max-w-xl
+                    "
+                >
+                    Je conçois des applications Web modernes,
+                    performantes et responsives avec
+                    <strong class="text-slate-200">
+                        React, Next.js, Angular, Java, Spring Boot
+                    </strong>
+                    et Node.js.
+                </p>
+
+
+                <!-- BUTTONS -->
+
+                <div
+                    class="
+                        flex
+                        flex-wrap
+                        gap-4
+                        mt-9
+                    "
+                >
+
+                    <a
+                        href="#projets"
+                        class="
+                            group
+                            inline-flex
+                            items-center
+                            gap-3
+                            px-6
+                            py-3.5
+                            rounded-xl
+                            bg-gradient-to-r
+                            from-violet-600
+                            to-cyan-500
+                            font-semibold
+                            shadow-lg
+                            shadow-violet-900/20
+                            hover:scale-105
+                            transition
+                        "
+                    >
+
+                        Voir mes projets
+
+                        <i
+                            data-lucide="arrow-right"
+                            class="
+                                w-4
+                                h-4
+                                group-hover:translate-x-1
+                                transition
+                            "
+                        ></i>
+
+                    </a>
+
+
+                    <a
+                        href="mailto:amira.belgharat@example.com"
+                        class="
+                            inline-flex
+                            items-center
+                            gap-3
+                            px-6
+                            py-3.5
+                            rounded-xl
+                            border
+                            border-slate-700
+                            bg-slate-900/50
+                            hover:border-violet-500/60
+                            transition
+                        "
+                    >
+
+                        <i
+                            data-lucide="mail"
+                            class="w-4 h-4"
+                        ></i>
+
+                        Me contacter
+
+                    </a>
+
+                </div>
+
+
+                <!-- SOCIAL -->
+
+                <div
+                    class="
+                        flex
+                        items-center
+                        gap-5
+                        mt-9
+                        text-slate-400
+                    "
+                >
+
+                    <a
+                        href="https://github.com/amirab123"
+                        target="_blank"
+                        class="hover:text-white transition"
+                    >
+                        <i data-lucide="github"></i>
+                    </a>
+
+                    <span class="text-slate-700">|</span>
+
+                    <span class="text-sm">
+                     Québec
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT -->
+
+            <div class="relative reveal">
+
+                <div
+                    class="
+                        absolute
+                        inset-0
+                        bg-violet-600/20
+                        blur-3xl
+                        rounded-full
+                    "
+                ></div>
+
+
+                <div
+                    class="
+                        relative
+                        max-w-lg
+                        mx-auto
+                        float
+                    "
+                >
+
+                    <!-- Main developer card -->
+
+                    <div
+                        class="
+                            glass
+                            rounded-3xl
+                            p-8
+                            shadow-glow
+                        "
+                    >
+
+                        <div
+                            class="
+                                flex
+                                items-center
+                                gap-3
+                                mb-7
+                            "
+                        >
+
+                            <div class="flex gap-2">
+
+                                <span class="w-3 h-3 rounded-full bg-red-400"></span>
+                                <span class="w-3 h-3 rounded-full bg-yellow-400"></span>
+                                <span class="w-3 h-3 rounded-full bg-green-400"></span>
+
+                            </div>
+
+                            <span class="text-xs text-slate-500">
+                                amira.dev
+                            </span>
+
+                        </div>
+
+
+                        <!-- CODE -->
+
+                        <div
+                            class="
+                                rounded-2xl
+                                bg-[#070b18]
+                                p-6
+                                font-mono
+                                text-sm
+                                leading-8
+                            "
+                        >
+
+                            <p>
+                                <span class="text-violet-400">
+                                    const
+                                </span>
+
+                                <span class="text-cyan-300">
+                                    developer
+                                </span>
+
+                                = {
+                            </p>
+
+                            <p class="pl-5">
+                                name:
+                                <span class="text-green-300">
+                                    "Amira"
+                                </span>,
+                            </p>
+
+                            <p class="pl-5">
+                                role:
+                                <span class="text-green-300">
+                                    "Full-Stack Developer"
+                                </span>,
+                            </p>
+
+                            <p class="pl-5">
+                                frontend: [
+                                <span class="text-orange-300">
+                                    "React"
+                                </span>,
+                                <span class="text-orange-300">
+                                    "Angular"
+                                </span>
+                                ],
+                            </p>
+
+                            <p class="pl-5">
+                                backend: [
+                                <span class="text-orange-300">
+                                    "Java"
+                                </span>,
+                                <span class="text-orange-300">
+                                    "Spring Boot"
+                                </span>
+                                ],
+                            </p>
+
+                            <p class="pl-5">
+                                database:
+                                <span class="text-green-300">
+                                    "PostgreSQL"
+                                </span>
+                            </p>
+
+                            <p>};</p>
+
+                        </div>
+
+
+                        <!-- TECH -->
+
+                        <div
+                            class="
+                                grid
+                                grid-cols-4
+                                gap-3
+                                mt-5
+                            "
+                        >
+
+                            <div class="text-center p-3 rounded-xl bg-slate-800/60">
+                                <span class="text-orange-400 font-bold">JS</span>
+                                <p class="text-[10px] text-slate-500 mt-1">JavaScript</p>
+                            </div>
+
+                            <div class="text-center p-3 rounded-xl bg-slate-800/60">
+                                <span class="text-cyan-400 font-bold">TS</span>
+                                <p class="text-[10px] text-slate-500 mt-1">TypeScript</p>
+                            </div>
+
+                            <div class="text-center p-3 rounded-xl bg-slate-800/60">
+                                <span class="text-green-400 font-bold">SB</span>
+                                <p class="text-[10px] text-slate-500 mt-1">Spring</p>
+                            </div>
+
+                            <div class="text-center p-3 rounded-xl bg-slate-800/60">
+                                <span class="text-blue-400 font-bold">PG</span>
+                                <p class="text-[10px] text-slate-500 mt-1">PostgreSQL</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Floating card -->
+
+                    <div
+                        class="
+                            absolute
+                            -right-5
+                            -bottom-7
+                            glass
+                            rounded-2xl
+                            px-5
+                            py-4
+                            shadow-xl
+                        "
+                    >
+
+                        <div class="flex items-center gap-3">
+
+                            <div
+                                class="
+                                    w-10
+                                    h-10
+                                    rounded-xl
+                                    bg-green-500/10
+                                    text-green-400
+                                    flex
+                                    items-center
+                                    justify-center
+                                "
+                            >
+                                <i data-lucide="check"></i>
+                            </div>
+
+                            <div>
+
+                                <p class="text-xs text-slate-500">
+                                    Statut
+                                </p>
+
+                                <p class="font-semibold">
+                                    Disponible
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     À PROPOS
+===================================================== -->
+
+<section id="apropos" class="py-28 relative">
+
+    <div
+        class="
+            max-w-7xl
+            mx-auto
+            px-6
+            lg:px-8
+        "
+    >
+
+        <div class="max-w-3xl mb-14 reveal">
+
+            <span
+                class="
+                    text-violet-400
+                    text-sm
+                    font-semibold
+                    uppercase
+                    tracking-widest
+                "
+            >
+                À propos
+            </span>
+
+            <h2
+                class="
+                    font-display
+                    text-4xl
+                    md:text-5xl
+                    font-bold
+                    mt-3
+                "
+            >
+                Construire des solutions
+                <span class="gradient-text">
+                    utiles et modernes.
+                </span>
+            </h2>
+
+        </div>
+
+
+        <div
+            class="
+                grid
+                lg:grid-cols-3
+                gap-6
+            "
+        >
+
+            <div
+                class="
+                    lg:col-span-2
+                    glass
+                    rounded-3xl
+                    p-8
+                    reveal
+                "
+            >
+
+                <p class="text-lg text-slate-300 leading-8">
+
+                    Développeuse Web Full-Stack Junior diplômée d'une
+                    <strong class="text-white">
+                        AEC en Développement Web
+                    </strong>,
+                    je possède une expérience pratique dans le développement
+                    d'applications Web modernes.
+
+                </p>
+
+                <p class="mt-5 text-slate-400 leading-8">
+
+                    J'ai travaillé avec React, Next.js, Angular, Vue.js,
+                    Java, Spring Boot, Node.js et PostgreSQL.
+                    Mon expérience comprend également l'authentification,
+                    la gestion des utilisateurs et des rôles,
+                    les tableaux de bord, les statistiques et les API REST.
+
+                </p>
+
+                <p class="mt-5 text-slate-400 leading-8">
+
+                    Je poursuis actuellement une
+                    <strong class="text-violet-300">
+                        Certification collégiale en Intelligence artificielle
+                    </strong>
+                    afin de développer mes compétences en IA tout en
+                    poursuivant ma carrière en développement Web et Full-Stack.
+
+                </p>
+
+            </div>
+
+
+            <div class="grid gap-6">
+
+                <div class="glass rounded-3xl p-7 reveal">
+
+                    <i
+                        data-lucide="map-pin"
+                        class="text-violet-400 mb-4"
+                    ></i>
+
+                    <p class="text-sm text-slate-500">
+                        Localisation
+                    </p>
+
+                    <p class="font-semibold mt-1">
+                     Québec
+                    </p>
+
+                </div>
+
+
+                <div class="glass rounded-3xl p-7 reveal">
+
+                    <i
+                        data-lucide="briefcase"
+                        class="text-cyan-400 mb-4"
+                    ></i>
+
+                    <p class="text-sm text-slate-500">
+                        Autorisation de travail
+                    </p>
+
+                    <p class="font-semibold mt-1">
+                        Citoyenne canadienne
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     COMPÉTENCES
+===================================================== -->
+
+<section
+    id="competences"
+    class="
+        py-28
+        bg-slate-950/40
+        relative
+    "
+>
+
+    <div
+        class="
+            max-w-7xl
+            mx-auto
+            px-6
+            lg:px-8
+        "
+    >
+
+        <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+
+            <span
+                class="
+                    text-violet-400
+                    text-sm
+                    uppercase
+                    tracking-widest
+                    font-semibold
+                "
+            >
+                Technologies
+            </span>
+
+            <h2
+                class="
+                    font-display
+                    text-4xl
+                    md:text-5xl
+                    font-bold
+                    mt-3
+                "
+            >
+                Mes compétences
+            </h2>
+
+            <p class="text-slate-400 mt-5">
+                Les technologies et outils que j'utilise
+                pour concevoir des applications Web.
+            </p>
+
+        </div>
+
+
+        <div
+            class="
+                grid
+                sm:grid-cols-2
+                lg:grid-cols-4
+                gap-5
+            "
+        >
+
+            <!-- React -->
+
+            <div class="skill-card hover-card glass rounded-2xl p-6 reveal">
+
+                <div
+                    class="
+                        w-14
+                        h-14
+                        rounded-2xl
+                        bg-cyan-500/10
+                        flex
+                        items-center
+                        justify-center
+                        text-cyan-400
+                        text-2xl
+                        font-bold
+                    "
+                >
+                    ⚛
+                </div>
+
+                <h3 class="font-semibold text-lg mt-5">
+                    React.js
+                </h3>
+
+                <p class="text-slate-500 text-sm mt-2">
+                    Front-End
+                </p>
+
+            </div>
+
+
+            <!-- Next -->
+
+            <div class="skill-card hover-card glass rounded-2xl p-6 reveal">
+
+                <div
+                    class="
+                        w-14
+                        h-14
+                        rounded-2xl
+                        bg-white/10
+                        flex
+                        items-center
+                        justify-center
+                        text-white
+                        text-2xl
+                        font-bold
+                    "
+                >
+                    N
+                </div>
+
+                <h3 class="font-semibold text-lg mt-5">
+                    Next.js
+                </h3>
+
+                <p class="text-slate-500 text-sm mt-2">
+                    Front-End
+                </p>
+
+            </div>
+
+
+            <!-- Angular -->
+
+            <div class="skill-card hover-card glass rounded-2xl p-6 reveal">
+
+                <div
+                    class="
+                        w-14
+                        h-14
+                        rounded-2xl
+                        bg-red-500/10
+                        flex
+                        items-center
+                        justify-center
+                        text-red-400
+                        text-2xl
+                        font-bold
+                    "
+                >
+                    A
+                </div>
+
+                <h3 class="font-semibold text-lg mt-5">
+                    Angular
+                </h3>
+
+                <p class="text-slate-500 text-sm mt-2">
+                    Front-End
+                </p>
+
+            </div>
+
+
+            <!-- Vue -->
+
+            <div class="skill-card hover-card glass rounded-2xl p-6 reveal">
+
+                <div
+                    class="
+                        w-14
+                        h-14
+                        rounded-2xl
+                        bg-green-500/10
+                        flex
+                        items-center
+                        justify-center
+                        text-green-400
+                        text-2xl
+                        font-bold
+                    "
+                >
+                    V
+                </div>
+
+                <h3 class="font-semibold text-lg mt-5">
+                    Vue.js
+                </h3>
+
+                <p class="text-slate-500 text-sm mt-2">
+                    Front-End
+                </p>
+
+            </div>
+
+
+            <!-- Java -->
+
+            <div class="skill-card hover-card glass rounded-2xl p-6 reveal">
+
+                <div
+                    class="
+                        w-14
+                        h-14
+                        rounded-2xl
+                        bg-orange-500/10
+                        flex
+                        items-center
+                        justify-center
+                        text-orange-400
+                        font-bold
+                        text-xl
+                    "
+                >
+                    ☕
+                </div>
+
+                <h3 class="font-semibold text-lg mt-5">
+                    Java
+                </h3>
+
+                <p class="text-slate-500 text-sm mt-2">
+                    Back-End
+                </p>
+
+            </div>
+
+
+            <!-- Spring Boot -->
+
+            <div class="skill-card hover-card glass rounded-2xl p-6 reveal">
+
+                <div
+                    class="
+                        w-14
+                        h-14
+                        rounded-2xl
+                        bg-green-500/10
+                        flex
+                        items-center
+                        justify-center
+                        text-green-400
+                        font-bold
+                    "
+                >
+                    SB
+                </div>
+
+                <h3 class="font-semibold text-lg mt-5">
+                    Spring Boot
+                </h3>
+
+                <p class="text-slate-500 text-sm mt-2">
+                    Back-End
+                </p>
+
+            </div>
+
+
+            <!-- Node -->
+
+            <div class="skill-card hover-card glass rounded-2xl p-6 reveal">
+
+                <div
+                    class="
+                        w-14
+                        h-14
+                        rounded-2xl
+                        bg-green-500/10
+                        flex
+                        items-center
+                        justify-center
+                        text-green-400
+                        font-bold
+                    "
+                >
+                    JS
+                </div>
+
+                <h3 class="font-semibold text-lg mt-5">
+                    Node.js
+                </h3>
+
+                <p class="text-slate-500 text-sm mt-2">
+                    Back-End
+                </p>
+
+            </div>
+
+
+            <!-- PostgreSQL -->
+
+            <div class="skill-card hover-card glass rounded-2xl p-6 reveal">
+
+                <div
+                    class="
+                        w-14
+                        h-14
+                        rounded-2xl
+                        bg-blue-500/10
+                        flex
+                        items-center
+                        justify-center
+                        text-blue-400
+                        font-bold
+                    "
+                >
+                    PG
+                </div>
+
+                <h3 class="font-semibold text-lg mt-5">
+                    PostgreSQL
+                </h3>
+
+                <p class="text-slate-500 text-sm mt-2">
+                    Base de données
+                </p>
+
+            </div>
+
+
+            <!-- Git -->
+
+            <div class="skill-card hover-card glass rounded-2xl p-6 reveal">
+
+                <div
+                    class="
+                        w-14
+                        h-14
+                        rounded-2xl
+                        bg-orange-500/10
+                        flex
+                        items-center
+                        justify-center
+                        text-orange-400
+                        font-bold
+                    "
+                >
+                    Git
+                </div>
+
+                <h3 class="font-semibold text-lg mt-5">
+                    Git & GitHub
+                </h3>
+
+                <p class="text-slate-500 text-sm mt-2">
+                    Versioning
+                </p>
+
+            </div>
+
+
+            <!-- Docker -->
+
+            <div class="skill-card hover-card glass rounded-2xl p-6 reveal">
+
+                <div
+                    class="
+                        w-14
+                        h-14
+                        rounded-2xl
+                        bg-blue-500/10
+                        flex
+                        items-center
+                        justify-center
+                        text-blue-400
+                        font-bold
+                    "
+                >
+                    🐳
+                </div>
+
+                <h3 class="font-semibold text-lg mt-5">
+                    Docker
+                </h3>
+
+                <p class="text-slate-500 text-sm mt-2">
+                    DevOps
+                </p>
+
+            </div>
+
+
+            <!-- Tailwind -->
+
+            <div class="skill-card hover-card glass rounded-2xl p-6 reveal">
+
+                <div
+                    class="
+                        w-14
+                        h-14
+                        rounded-2xl
+                        bg-cyan-500/10
+                        flex
+                        items-center
+                        justify-center
+                        text-cyan-400
+                        font-bold
+                    "
+                >
+                    TW
+                </div>
+
+                <h3 class="font-semibold text-lg mt-5">
+                    Tailwind CSS
+                </h3>
+
+                <p class="text-slate-500 text-sm mt-2">
+                    UI / CSS
+                </p>
+
+            </div>
+
+
+            <!-- Postman -->
+
+            <div class="skill-card hover-card glass rounded-2xl p-6 reveal">
+
+                <div
+                    class="
+                        w-14
+                        h-14
+                        rounded-2xl
+                        bg-orange-500/10
+                        flex
+                        items-center
+                        justify-center
+                        text-orange-400
+                        font-bold
+                    "
+                >
+                    P
+                </div>
+
+                <h3 class="font-semibold text-lg mt-5">
+                    Postman
+                </h3>
+
+                <p class="text-slate-500 text-sm mt-2">
+                    API REST
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     EXPÉRIENCE
+===================================================== -->
+
+<section id="experience" class="py-28">
+
+    <div
+        class="
+            max-w-7xl
+            mx-auto
+            px-6
+            lg:px-8
+        "
+    >
+
+        <div class="max-w-2xl mb-14 reveal">
+
+            <span
+                class="
+                    text-violet-400
+                    text-sm
+                    uppercase
+                    tracking-widest
+                    font-semibold
+                "
+            >
+                Expérience
+            </span>
+
+            <h2
+                class="
+                    font-display
+                    text-4xl
+                    md:text-5xl
+                    font-bold
+                    mt-3
+                "
+            >
+                Mon expérience
+            </h2>
+
+        </div>
+
+
+        <div class="relative">
+
+            <div class="timeline-line"></div>
+
+
+            <div class="relative pl-10 reveal">
+
+                <!-- DOT -->
+
+                <div
+                    class="
+                        absolute
+                        left-0
+                        top-2
+                        w-[19px]
+                        h-[19px]
+                        rounded-full
+                        bg-violet-500
+                        border-4
+                        border-[#050816]
+                        shadow-lg
+                        shadow-violet-500/50
+                    "
+                ></div>
+
+
+                <div
+                    class="
+                        timeline-card
+                        glass
+                        rounded-3xl
+                        p-8
+                    "
+                >
+
+                    <div
+                        class="
+                            flex
+                            flex-col
+                            md:flex-row
+                            md:items-center
+                            md:justify-between
+                            gap-4
+                        "
+                    >
+
+                        <div>
+
+                            <span
+                                class="
+                                    inline-block
+                                    px-3
+                                    py-1
+                                    rounded-full
+                                    bg-violet-500/10
+                                    text-violet-300
+                                    text-xs
+                                    font-medium
+                                    mb-3
+                                "
+                            >
+                                Avril 2026 — Juin 2026
+                            </span>
+
+                            <h3
+                                class="
+                                    text-2xl
+                                    font-bold
+                                "
+                            >
+                                Stagiaire – Développement Full-Stack
+                            </h3>
+
+                            <p class="text-slate-400 mt-2">
+                                Projet CRM
+                            </p>
+
+                        </div>
+
+                        <div
+                            class="
+                                flex
+                                items-center
+                                gap-2
+                                text-sm
+                                text-slate-500
+                            "
+                        >
+                            <i
+                                data-lucide="code-2"
+                                class="w-4 h-4"
+                            ></i>
+
+                            Full-Stack
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="
+                            grid
+                            md:grid-cols-2
+                            gap-x-10
+                            gap-y-4
+                            mt-8
+                        "
+                    >
+
+                        <div class="flex gap-3">
+                            <i
+                                data-lucide="check"
+                                class="text-violet-400 w-5 h-5 shrink-0"
+                            ></i>
+
+                            <span class="text-slate-400">
+                                Développement de fonctionnalités Web
+                                avec React, Next.js, JavaScript et
+                                Tailwind CSS.
+                            </span>
+                        </div>
+
+
+                        <div class="flex gap-3">
+                            <i
+                                data-lucide="check"
+                                class="text-violet-400 w-5 h-5 shrink-0"
+                            ></i>
+
+                            <span class="text-slate-400">
+                                Implémentation de l'authentification,
+                                des rôles et des permissions.
+                            </span>
+                        </div>
+
+
+                        <div class="flex gap-3">
+                            <i
+                                data-lucide="check"
+                                class="text-violet-400 w-5 h-5 shrink-0"
+                            ></i>
+
+                            <span class="text-slate-400">
+                                Intégration et consommation d'API REST.
+                            </span>
+                        </div>
+
+
+                        <div class="flex gap-3">
+                            <i
+                                data-lucide="check"
+                                class="text-violet-400 w-5 h-5 shrink-0"
+                            ></i>
+
+                            <span class="text-slate-400">
+                                Création de tableaux de bord et
+                                statistiques.
+                            </span>
+                        </div>
+
+
+                        <div class="flex gap-3">
+                            <i
+                                data-lucide="check"
+                                class="text-violet-400 w-5 h-5 shrink-0"
+                            ></i>
+
+                            <span class="text-slate-400">
+                                Intégration et manipulation des données
+                                avec PostgreSQL.
+                            </span>
+                        </div>
+
+
+                        <div class="flex gap-3">
+                            <i
+                                data-lucide="check"
+                                class="text-violet-400 w-5 h-5 shrink-0"
+                            ></i>
+
+                            <span class="text-slate-400">
+                                Git, GitHub, Docker et Trello dans
+                                un environnement Agile.
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- TECHNOLOGIES -->
+
+                    <div class="flex flex-wrap gap-2 mt-8">
+
+                        <span class="px-3 py-1.5 rounded-lg bg-cyan-500/10 text-cyan-300 text-xs">
+                            React
+                        </span>
+
+                        <span class="px-3 py-1.5 rounded-lg bg-blue-500/10 text-blue-300 text-xs">
+                            Next.js
+                        </span>
+
+                        <span class="px-3 py-1.5 rounded-lg bg-yellow-500/10 text-yellow-300 text-xs">
+                            JavaScript
+                        </span>
+
+                        <span class="px-3 py-1.5 rounded-lg bg-cyan-500/10 text-cyan-300 text-xs">
+                            Tailwind CSS
+                        </span>
+
+                        <span class="px-3 py-1.5 rounded-lg bg-green-500/10 text-green-300 text-xs">
+                            PostgreSQL
+                        </span>
+
+                        <span class="px-3 py-1.5 rounded-lg bg-orange-500/10 text-orange-300 text-xs">
+                            Git
+                        </span>
+
+                        <span class="px-3 py-1.5 rounded-lg bg-blue-500/10 text-blue-300 text-xs">
+                            Docker
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PROJETS
+===================================================== -->
+
+<section
+    id="projets"
+    class="
+        py-28
+        bg-slate-950/40
+    "
+>
+
+    <div
+        class="
+            max-w-7xl
+            mx-auto
+            px-6
+            lg:px-8
+        "
+    >
+
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-14 reveal">
+
+            <div>
+
+                <span
+                    class="
+                        text-violet-400
+                        text-sm
+                        uppercase
+                        tracking-widest
+                        font-semibold
+                    "
+                >
+                    Portfolio
+                </span>
+
+                <h2
+                    class="
+                        font-display
+                        text-4xl
+                        md:text-5xl
+                        font-bold
+                        mt-3
+                    "
+                >
+                    Mes projets
+                </h2>
+
+            </div>
+
+            <p class="text-slate-500 mt-4 md:mt-0">
+                Quelques réalisations Web
+            </p>
+
+        </div>
+
+
+        <div
+            class="
+                grid
+                md:grid-cols-2
+                gap-6
+            "
+        >
+
+
+            <!-- PROJECT 1 -->
+
+            <article
+                class="
+                    project-card
+                    hover-card
+                    glass
+                    rounded-3xl
+                    overflow-hidden
+                    reveal
+                "
+            >
+
+                <div
+                    class="
+                        project-image
+                        bg-gradient-to-br
+                        from-red-500/20
+                        to-orange-500/10
+                    "
+                >
+
+                    <div
+                        class="
+                            text-7xl
+                            font-black
+                            text-red-400
+                        "
+                    >
+                        A
+                    </div>
+
+                </div>
+
+
+                <div class="p-7">
+
+                    <div class="flex items-center justify-between">
+
+                        <h3 class="text-xl font-bold">
+                            Portfolio professionnel
+                        </h3>
+
+                        <i
+                            data-lucide="arrow-up-right"
+                            class="text-slate-500"
+                        ></i>
+
+                    </div>
+
+                    <p class="text-slate-400 mt-4 leading-7">
+                        Portfolio responsive développé avec Angular,
+                        Angular Router et SCSS, avec une interface
+                        moderne et adaptée aux différents écrans.
+                    </p>
+
+
+                    <div class="flex flex-wrap gap-2 mt-6">
+
+                        <span class="tag">
+                            Angular
+                        </span>
+
+                        <span class="tag">
+                            TypeScript
+                        </span>
+
+                        <span class="tag">
+                            SCSS
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PROJECT 2 -->
+
+            <article
+                class="
+                    project-card
+                    hover-card
+                    glass
+                    rounded-3xl
+                    overflow-hidden
+                    reveal
+                "
+            >
+
+                <div
+                    class="
+                        project-image
+                        bg-gradient-to-br
+                        from-green-500/20
+                        to-cyan-500/10
+                    "
+                >
+
+                    <div
+                        class="
+                            text-6xl
+                            font-black
+                            text-green-400
+                        "
+                    >
+                        SB
+                    </div>
+
+                </div>
+
+
+                <div class="p-7">
+
+                    <div class="flex items-center justify-between">
+
+                        <h3 class="text-xl font-bold">
+                            API REST
+                        </h3>
+
+                        <i
+                            data-lucide="arrow-up-right"
+                            class="text-slate-500"
+                        ></i>
+
+                    </div>
+
+                    <p class="text-slate-400 mt-4 leading-7">
+                        Développement d'une API CRUD avec Spring Boot,
+                        Java et MySQL. Architecture MVC et gestion
+                        des utilisateurs.
+                    </p>
+
+
+                    <div class="flex flex-wrap gap-2 mt-6">
+
+                        <span class="tag">
+                            Java
+                        </span>
+
+                        <span class="tag">
+                            Spring Boot
+                        </span>
+
+                        <span class="tag">
+                            MySQL
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PROJECT 3 -->
+
+            <article
+                class="
+                    project-card
+                    hover-card
+                    glass
+                    rounded-3xl
+                    overflow-hidden
+                    reveal
+                "
+            >
+
+                <div
+                    class="
+                        project-image
+                        bg-gradient-to-br
+                        from-green-400/20
+                        to-teal-500/10
+                    "
+                >
+
+                    <div
+                        class="
+                            text-7xl
+                            font-black
+                            text-green-400
+                        "
+                    >
+                        V
+                    </div>
+
+                </div>
+
+
+                <div class="p-7">
+
+                    <div class="flex items-center justify-between">
+
+                        <h3 class="text-xl font-bold">
+                            Application de gestion de tâches
+                        </h3>
+
+                        <i
+                            data-lucide="arrow-up-right"
+                            class="text-slate-500"
+                        ></i>
+
+                    </div>
+
+                    <p class="text-slate-400 mt-4 leading-7">
+                        Application CRUD responsive permettant de
+                        créer, modifier, supprimer et gérer des tâches
+                        avec une interface moderne.
+                    </p>
+
+
+                    <div class="flex flex-wrap gap-2 mt-6">
+
+                        <span class="tag">
+                            Vue.js
+                        </span>
+
+                        <span class="tag">
+                            Tailwind CSS
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PROJECT 4 -->
+
+            <article
+                class="
+                    project-card
+                    hover-card
+                    glass
+                    rounded-3xl
+                    overflow-hidden
+                    reveal
+                "
+            >
+
+                <div
+                    class="
+                        project-image
+                        bg-gradient-to-br
+                        from-orange-500/20
+                        to-yellow-500/10
+                    "
+                >
+
+                    <div
+                        class="
+                            text-6xl
+                            font-black
+                            text-orange-400
+                        "
+                    >
+                        🔥
+                    </div>
+
+                </div>
+
+
+                <div class="p-7">
+
+                    <div class="flex items-center justify-between">
+
+                        <h3 class="text-xl font-bold">
+                            Authentification Firebase
+                        </h3>
+
+                        <i
+                            data-lucide="arrow-up-right"
+                            class="text-slate-500"
+                        ></i>
+
+                    </div>
+
+                    <p class="text-slate-400 mt-4 leading-7">
+                        Application avec inscription, connexion,
+                        gestion des utilisateurs et utilisation de
+                        Firestore pour les données.
+                    </p>
+
+
+                    <div class="flex flex-wrap gap-2 mt-6">
+
+                        <span class="tag">
+                            JavaScript
+                        </span>
+
+                        <span class="tag">
+                            Firebase
+                        </span>
+
+                        <span class="tag">
+                            Firestore
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FORMATIONS
+===================================================== -->
+
+<section id="formations" class="py-28">
+
+    <div
+        class="
+            max-w-7xl
+            mx-auto
+            px-6
+            lg:px-8
+        "
+    >
+
+        <div class="max-w-2xl mb-16 reveal">
+
+            <span
+                class="
+                    text-violet-400
+                    text-sm
+                    uppercase
+                    tracking-widest
+                    font-semibold
+                "
+            >
+                Parcours
+            </span>
+
+            <h2
+                class="
+                    font-display
+                    text-4xl
+                    md:text-5xl
+                    font-bold
+                    mt-3
+                "
+            >
+                Formation
+            </h2>
+
+        </div>
+
+
+        <div class="relative">
+
+            <div class="timeline-line"></div>
+
+
+            <!-- 2026 -->
+
+            <div class="relative pl-10 pb-12 reveal">
+
+                <div
+                    class="
+                        absolute
+                        left-0
+                        top-2
+                        w-[19px]
+                        h-[19px]
+                        rounded-full
+                        bg-violet-500
+                        border-4
+                        border-[#050816]
+                    "
+                ></div>
+
+
+                <div class="timeline-card glass rounded-3xl p-7">
+
+                    <div class="flex flex-col md:flex-row md:justify-between gap-3">
+
+                        <div>
+
+                            <span class="text-violet-400 text-sm font-semibold">
+                                Septembre 2026 — Mars 2027
+                            </span>
+
+                            <h3 class="text-xl font-bold mt-2">
+                                AEC – Certification collégiale en Intelligence artificielle
+                            </h3>
+
+                            <p class="text-slate-400 mt-2">
+                                Cégep de Trois-Rivières, Québec
+                            </p>
+
+                        </div>
+
+                        <span
+                            class="
+                                h-fit
+                                px-3
+                                py-1
+                                rounded-full
+                                bg-green-500/10
+                                text-green-400
+                                text-xs
+                            "
+                        >
+                            En cours
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- 2024 -->
+
+            <div class="relative pl-10 pb-12 reveal">
+
+                <div
+                    class="
+                        absolute
+                        left-0
+                        top-2
+                        w-[19px]
+                        h-[19px]
+                        rounded-full
+                        bg-cyan-500
+                        border-4
+                        border-[#050816]
+                    "
+                ></div>
+
+
+                <div class="timeline-card glass rounded-3xl p-7">
+
+                    <span class="text-cyan-400 text-sm font-semibold">
+                        2024 — Juin 2026
+                    </span>
+
+                    <h3 class="text-xl font-bold mt-2">
+                        AEC – Développement Web
+                    </h3>
+
+                    <p class="text-slate-400 mt-2">
+                        Cégep de Trois-Rivières, Québec
+                    </p>
+
+                    <div class="flex flex-wrap gap-2 mt-5">
+
+                        <span class="tag">
+                            React
+                        </span>
+
+                        <span class="tag">
+                            Angular
+                        </span>
+
+                        <span class="tag">
+                            PHP
+                        </span>
+
+                        <span class="tag">
+                            Java
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- 2023 -->
+
+            <div class="relative pl-10 pb-12 reveal">
+
+                <div
+                    class="
+                        absolute
+                        left-0
+                        top-2
+                        w-[19px]
+                        h-[19px]
+                        rounded-full
+                        bg-blue-500
+                        border-4
+                        border-[#050816]
+                    "
+                ></div>
+
+
+                <div class="timeline-card glass rounded-3xl p-7">
+
+                    <span class="text-blue-400 text-sm font-semibold">
+                        2023
+                    </span>
+
+                    <h3 class="text-xl font-bold mt-2">
+                        Maîtrise en Informatique
+                    </h3>
+
+                    <p class="text-slate-400 mt-2">
+                        ISET de Sousse, Tunisie
+                    </p>
+
+                    <p class="text-sm text-slate-500 mt-3">
+                        Diplôme reconnu équivalent au Québec — MIFI
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- 2023 -->
+
+            <div class="relative pl-10 reveal">
+
+                <div
+                    class="
+                        absolute
+                        left-0
+                        top-2
+                        w-[19px]
+                        h-[19px]
+                        rounded-full
+                        bg-orange-500
+                        border-4
+                        border-[#050816]
+                    "
+                ></div>
+
+
+                <div class="timeline-card glass rounded-3xl p-7">
+
+                    <span class="text-orange-400 text-sm font-semibold">
+                        2023
+                    </span>
+
+                    <h3 class="text-xl font-bold mt-2">
+                        Baccalauréat en Informatique
+                    </h3>
+
+                    <p class="text-slate-400 mt-2">
+                        ISET de Sousse, Tunisie
+                    </p>
+
+                    <p class="text-sm text-slate-500 mt-3">
+                        Diplôme reconnu équivalent au Québec — MIFI
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     LANGUES
+===================================================== -->
+
+<section class="py-20 bg-slate-950/40">
+
+    <div
+        class="
+            max-w-5xl
+            mx-auto
+            px-6
+            text-center
+        "
+    >
+
+        <div class="reveal">
+
+            <span
+                class="
+                    text-violet-400
+                    text-sm
+                    uppercase
+                    tracking-widest
+                    font-semibold
+                "
+            >
+                Communication
+            </span>
+
+            <h2
+                class="
+                    font-display
+                    text-4xl
+                    font-bold
+                    mt-3
+                "
+            >
+                Langues
+            </h2>
+
+        </div>
+
+
+        <div
+            class="
+                grid
+                md:grid-cols-2
+                gap-6
+                mt-10
+            "
+        >
+
+            <div
+                class="
+                    glass
+                    rounded-2xl
+                    p-6
+                    text-left
+                    reveal
+                "
+            >
+
+                <div class="flex justify-between">
+
+                    <span class="font-semibold">
+                        Français
+                    </span>
+
+                    <span class="text-violet-400">
+                        Courant
+                    </span>
+
+                </div>
+
+                <div class="h-2 bg-slate-800 rounded-full mt-4">
+
+                    <div
+                        class="
+                            h-full
+                            w-[95%]
+                            bg-gradient-to-r
+                            from-violet-600
+                            to-cyan-400
+                            rounded-full
+                        "
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="
+                    glass
+                    rounded-2xl
+                    p-6
+                    text-left
+                    reveal
+                "
+            >
+
+                <div class="flex justify-between">
+
+                    <span class="font-semibold">
+                        Anglais
+                    </span>
+
+                    <span class="text-cyan-400">
+                        Intermédiaire professionnel
+                    </span>
+
+                </div>
+
+                <div class="h-2 bg-slate-800 rounded-full mt-4">
+
+                    <div
+                        class="
+                            h-full
+                            w-[70%]
+                            bg-gradient-to-r
+                            from-cyan-500
+                            to-blue-500
+                            rounded-full
+                        "
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
+
+<section id="contact" class="py-28">
+
+    <div
+        class="
+            max-w-5xl
+            mx-auto
+            px-6
+        "
+    >
+
+        <div
+            class="
+                relative
+                overflow-hidden
+                glass
+                rounded-[2rem]
+                p-10
+                md:p-16
+                text-center
+                reveal
+            "
+        >
+
+            <div
+                class="
+                    absolute
+                    -top-24
+                    -right-24
+                    w-64
+                    h-64
+                    bg-violet-600/20
+                    blur-3xl
+                    rounded-full
+                "
+            ></div>
+
+
+            <div class="relative z-10">
+
+                <span
+                    class="
+                        text-violet-400
+                        text-sm
+                        uppercase
+                        tracking-widest
+                        font-semibold
+                    "
+                >
+                    Contact
+                </span>
+
+
+                <h2
+                    class="
+                        font-display
+                        text-4xl
+                        md:text-5xl
+                        font-bold
+                        mt-4
+                    "
+                >
+                    Construisons quelque chose
+                    <span class="gradient-text">
+                        ensemble.
+                    </span>
+                </h2>
+
+
+                <p
+                    class="
+                        max-w-2xl
+                        mx-auto
+                        text-slate-400
+                        mt-6
+                        text-lg
+                    "
+                >
+                    Je suis actuellement à la recherche
+                    d'opportunités en développement Web
+                    ou Full-Stack Junior.
+                </p>
+
+
+                <div
+                    class="
+                        flex
+                        flex-wrap
+                        justify-center
+                        gap-4
+                        mt-9
+                    "
+                >
+
+                    <a
+                        href="mailto:amira.belgharat@example.com"
+                        class="
+                            inline-flex
+                            items-center
+                            gap-3
+                            px-7
+                            py-3.5
+                            rounded-xl
+                            bg-white
+                            text-slate-900
+                            font-semibold
+                            hover:bg-violet-100
+                            transition
+                        "
+                    >
+
+                        <i data-lucide="mail"></i>
+
+                        Me contacter
+
+                    </a>
+
+
+                    <a
+                        href="https://github.com/amirab123"
+                        target="_blank"
+                        class="
+                            inline-flex
+                            items-center
+                            gap-3
+                            px-7
+                            py-3.5
+                            rounded-xl
+                            border
+                            border-slate-700
+                            hover:border-violet-500
+                            transition
+                        "
+                    >
+
+                        <i data-lucide="github"></i>
+
+                        GitHub
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer
+    class="
+        border-t
+        border-slate-800/70
+        py-8
+    "
+>
+
+    <div
+        class="
+            max-w-7xl
+            mx-auto
+            px-6
+            flex
+            flex-col
+            md:flex-row
+            justify-between
+            gap-4
+            text-sm
+            text-slate-500
+        "
+    >
+
+        <p>
+            © 2026 Amira Belgharat
+        </p>
+
+        <p>
+            Développeuse Web Full-Stack Junior
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+    /* ==========================================
+       LUCIDE ICONS
+    ========================================== */
+
+    lucide.createIcons();
+
+
+    /* ==========================================
+       MOBILE MENU
+    ========================================== */
+
+    const menuBtn =
+        document.getElementById("menuBtn");
+
+    const mobileMenu =
+        document.getElementById("mobileMenu");
+
+
+    menuBtn.addEventListener("click", () => {
+
+        mobileMenu.classList.toggle("hidden");
+
+    });
+
+
+    /* Fermer menu après clic */
+
+    document
+        .querySelectorAll(".mobile-link")
+        .forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                mobileMenu.classList.add("hidden");
+
+            });
+
+        });
+
+
+    /* ==========================================
+       NAVBAR SCROLL
+    ========================================== */
+
+    const navbar =
+        document.getElementById("navbar");
+
+
+    window.addEventListener("scroll", () => {
+
+        if (window.scrollY > 50) {
+
+            navbar.classList.add(
+                "bg-[#050816]/80",
+                "backdrop-blur-xl",
+                "border-b",
+                "border-slate-800/70"
+            );
+
+        } else {
+
+            navbar.classList.remove(
+                "bg-[#050816]/80",
+                "backdrop-blur-xl",
+                "border-b",
+                "border-slate-800/70"
+            );
+
+        }
+
+    });
+
+
+    /* ==========================================
+       SCROLL REVEAL
+    ========================================== */
+
+    const revealElements =
+        document.querySelectorAll(".reveal");
+
+
+    const observer =
+        new IntersectionObserver(
+
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("active");
+
+                        observer.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                });
+
+            },
+
+            {
+                threshold: 0.12
+            }
+
+        );
+
+
+    revealElements.forEach(element => {
+
+        observer.observe(element);
+
+    });
+
+
+    /* ==========================================
+       CURSOR GLOW
+    ========================================== */
+
+    const cursorLight =
+        document.getElementById("cursorLight");
+
+
+    document.addEventListener(
+        "mousemove",
+        event => {
+
+            cursorLight.style.left =
+                event.clientX + "px";
+
+            cursorLight.style.top =
+                event.clientY + "px";
+
+        }
+    );
+
+
+    /* ==========================================
+       ACTIVE NAVIGATION
+    ========================================== */
+
+    const sections =
+        document.querySelectorAll("section[id]");
+
+    const navLinks =
+        document.querySelectorAll(
+            ".nav-link"
+        );
+
+
+    window.addEventListener("scroll", () => {
+
+        let current = "";
+
+        sections.forEach(section => {
+
+            const sectionTop =
+                section.offsetTop - 150;
+
+            if (
+                window.scrollY >= sectionTop
+            ) {
+
+                current =
+                    section.getAttribute("id");
+
+            }
+
+        });
+
+
+        navLinks.forEach(link => {
+
+            link.classList.remove(
+                "text-white"
+            );
+
+            if (
+                link.getAttribute("href") ===
+                "#" + current
+            ) {
+
+                link.classList.add(
+                    "text-white"
+                );
+
+            }
+
+        });
+
+    });
+
+
+    /* ==========================================
+       TYPING EFFECT
+    ========================================== */
+
+    const roles = [
+        "Développeuse Web",
+        "Développeuse Full-Stack",
+        "Développeuse React",
+        "Développeuse Angular"
+    ];
+
+
+    let roleIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+
+    const roleElement =
+        document.querySelector(
+            "#accueil h2 span"
+        );
+
+
+    function typeEffect() {
+
+        if (!roleElement) return;
+
+
+        const currentRole =
+            roles[roleIndex];
+
+
+        if (!deleting) {
+
+            roleElement.textContent =
+                currentRole.substring(
+                    0,
+                    charIndex + 1
+                );
+
+            charIndex++;
+
+
+            if (
+                charIndex ===
+                currentRole.length
+            ) {
+
+                deleting = true;
+
+                setTimeout(
+                    typeEffect,
+                    1800
+                );
+
+                return;
+
+            }
+
+        } else {
+
+            roleElement.textContent =
+                currentRole.substring(
+                    0,
+                    charIndex - 1
+                );
+
+            charIndex--;
+
+
+            if (charIndex === 0) {
+
+                deleting = false;
+
+                roleIndex =
+                    (roleIndex + 1) %
+                    roles.length;
+
+            }
+
+        }
+
+
+        setTimeout(
+            typeEffect,
+            deleting ? 50 : 100
+        );
+
+    }
+
+
+    typeEffect();
+
+</script>
+
+
+
+
+<style>
+
+    .tag {
+        display: inline-flex;
+
+        padding:
+            .4rem
+            .7rem;
+
+        border-radius:
+            .5rem;
+
+        background:
+            rgba(139,92,246,.08);
+
+        color:
+            #c4b5fd;
+
+        font-size:
+            .75rem;
+    }
+
+</style>
+
+
+</body>
+</html>
